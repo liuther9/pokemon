@@ -1,0 +1,16 @@
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+	background-color: pink;
+	display: flex;
+	.container {
+		width: calc(100vw - 240px);
+	}
+	@media (max-width: 768px) {
+		flex-direction: column;
+		.container {
+			width: 100vw;
+			height: 80vh;
+		}
+	}
+}
