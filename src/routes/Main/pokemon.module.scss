@@ -8,6 +8,7 @@
 	background-color: #fff;
 	padding: 10px;
 	border-radius: 5px;
+	margin-bottom: 10px;
 	cursor: pointer;
 	.name {
 		color: #000;
@@ -27,6 +28,31 @@
 		.exp {
 			font-size: 12px;
 			color: #000;
+		}
+	}
+	.types_container {
+		display: flex;
+		align-items: center;
+		padding: 5px;
+		.type {
+			padding: 5px;
+			margin: 0 3px;
+			color: #fff;
+			background-color: pink;
+			font-size: 10px;
+			border-radius: 5px;
+			&:nth-last-of-type(2) {
+				background-color: yellow;
+			}
+			&:nth-last-of-type(2) {
+				background-color: yellow;
+			}
+			&:nth-last-of-type(3) {
+				background-color: green;
+			}
+			&:nth-last-of-type(4) {
+				background-color: greenyellow;
+			}
 		}
 	}
 	@media (max-width: 768px) {

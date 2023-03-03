@@ -68,12 +68,11 @@
 		}
 	}
 	.container {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 10px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		padding: 20px;
 		overflow: auto;
-		max-height: 100%;
 		background-color: rgb(216, 162, 171);
 		.loading {
 			flex: 1;
@@ -87,9 +86,6 @@
 			flex-wrap: nowrap;
 			overflow: auto;
 			min-height: 50px;
-		}
-		.container {
-			grid-template-columns: 1fr 1fr;
 		}
 		.settings {
 			flex-direction: column;
