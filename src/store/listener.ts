@@ -4,6 +4,7 @@ import { setPokemons } from './pokemonSlice';
 import { IPokemon } from '../types';
 import { setInput } from './searchSlice';
 import { RootState } from '.';
+import { setLoading } from './loadingSlice';
 
 const listenerMiddleware = createListenerMiddleware()
 
@@ -15,6 +16,7 @@ listenerMiddleware.startListening({
 			const state: any = listenerApi.getState()
 			const data = state['pokemonApi']['queries']['getAllPokemons("")']['data']
 			const arr: IPokemon[] = []
+			listenerApi.dispatch(setLoading(true))
 			await Promise.all(data.results.map(async (i: any) => {
 				try {
 					const data = await fetch(i.url).then(res => res.json())
@@ -23,7 +25,8 @@ listenerMiddleware.startListening({
 					console.log(error)
 				}
 			}))
-			setTimeout(() => listenerApi.dispatch(setPokemons(arr)), 1000)
+			listenerApi.dispatch(setPokemons(arr))
+			listenerApi.dispatch(setLoading(false))
     }
   },
 })

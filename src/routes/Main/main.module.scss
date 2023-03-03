@@ -75,6 +75,10 @@
 		overflow: auto;
 		max-height: 100%;
 		background-color: rgb(216, 162, 171);
+		.loading {
+			flex: 1;
+			animation: loading 1s infinite;
+		}
 	}
 	@media (max-width: 768px) {
 		width: 100vw;
@@ -96,5 +100,16 @@
 				}
 			}
 		}
+	}
+}
+@keyframes loading {
+  0% {transform: translateX(0)}
+  50% {
+		transform: translateX(200%);
+		opacity: 0.5;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
 	}
 }

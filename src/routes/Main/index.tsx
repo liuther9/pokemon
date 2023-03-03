@@ -25,6 +25,7 @@ export default function Main() {
 	}
 
 	const pokes = useAppSelector(state => state.pokemonSlice)
+	const loading = useAppSelector(state => state.loadingSlice)
 
 	useEffect(() => {
 		const arr = type.length !== 0 ? pokes.filter(pokemon => pokemon.types.find(i => i.type.name === type)) : pokes
@@ -40,9 +41,7 @@ export default function Main() {
 		setPokemons(arr)
 	}, [page, perPage, allPokes, type])
 
-	useEffect(() => {
-		setPageCount(Math.ceil(allPokes.length)/perPage)
-	}, [allPokes, perPage])
+	useEffect(() => { setPageCount(Math.ceil(allPokes.length)/perPage) }, [allPokes, perPage])
 
 	return (
 		<section className={s.wrapper}>
@@ -88,9 +87,9 @@ export default function Main() {
 			</div>
 			{
 				<div className={s.container}>
-					{pokemons.map((pokemon) => (
+					{!loading ? pokemons.map((pokemon) => (
 						<Pokemon key={pokemon.name} pokemon={pokemon} setPokemon={setPokemon} />
-					))}
+					)) : <h1 className={s.loading}>Загрузка</h1> }
 				</div>
 			}
 			{show && <PokemonModal pokemon={selectedPokemon} setShow={setShow} />}

@@ -4,12 +4,14 @@ import { pokemonApi } from './pokemonApi'
 import pokemonSlice from './pokemonSlice'
 import listenerMiddleware from './listener'
 import searchSlice from './searchSlice'
+import loadingSlice from './loadingSlice'
 
 export const store = configureStore({
   reducer: {
 		[pokemonApi.reducerPath]: pokemonApi.reducer,
 		pokemonSlice: pokemonSlice,
-		search: searchSlice
+		search: searchSlice,
+		loadingSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware).prepend(listenerMiddleware.middleware),
